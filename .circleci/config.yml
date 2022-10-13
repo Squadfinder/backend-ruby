@@ -1,0 +1,27 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+jobs:
+  build:
+    working_directory: ~/backend-ruby
+    docker:
+      - image: circleci/ruby:2.7.2
+        environment:
+          PGHOST: localhost
+          PGUSER: backend-ruby
+          RAILS_ENV: test
+      - image: postgres:13.2
+        environment:
+          POSTGRES_USER: backend-ruby
+          POSTGRES_DB: backend-ruby_test
+          POSTGRES_PASSWORD:
+    steps:
+      - checkout
+      - run:
+          name: backend-ruby
+          command: bundle -v
+      - ruby/bundle-install
+      - checkout
+      - run: bundle install --path vendor/bundle
+      - run: bundle exec rake db:migrate
+      - run: bundle exec rspec
