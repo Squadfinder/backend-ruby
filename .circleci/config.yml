@@ -29,15 +29,15 @@ jobs:
       - run: bundle exec rake db:migrate
       - run: bundle exec rspec
 
-# workflows:
-#   build-workflow:
-#     jobs:
-#       - build
+workflows:
+  build-workflow:
+    jobs:
+      - build
   
-#   heroku-workflow: 
-#     jobs:
-#       - heroku/deploy-via-git:
-#         force: true
-#         app-name: backend-ruby
-#         api-key: HEROKU_API_KEY
-#         branch: main
+  heroku-workflow: 
+    jobs:
+      - heroku/deploy-via-git:
+        force: true
+        app-name: backend-ruby
+        api-key: HEROKU_API_KEY
+        branch: main
