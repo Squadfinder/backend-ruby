@@ -1,6 +1,8 @@
 version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2
+  heroku: circleci/heroku@1.2.6
+
 jobs:
   build:
     working_directory: ~/backend-ruby
@@ -10,7 +12,7 @@ jobs:
           PGHOST: localhost
           PGUSER: backend-ruby
           RAILS_ENV: test
-      - image: postgres:13.2
+      - image: postgres:14.5
         environment:
           POSTGRES_USER: backend-ruby
           POSTGRES_DB: backend-ruby_test
@@ -21,7 +23,21 @@ jobs:
           name: backend-ruby
           command: bundle -v
       - ruby/bundle-install
+
       - checkout
       - run: bundle install --path vendor/bundle
       - run: bundle exec rake db:migrate
       - run: bundle exec rspec
+
+# workflows:
+#   build-workflow:
+#     jobs:
+#       - build
+  
+#   heroku-workflow: 
+#     jobs:
+#       - heroku/deploy-via-git:
+#         force: true
+#         app-name: backend-ruby
+#         api-key: HEROKU_API_KEY
+#         branch: main
