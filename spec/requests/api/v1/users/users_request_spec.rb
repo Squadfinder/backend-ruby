@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe "Users API" do
-  it 'sends a list of all Users' do
+  it 'Can return a list of all Users' do
     create_list(:user, 5)
 
-    get '/api/v1/users'
+    get api_v1_users_path
 
     expect(response).to be_successful
 
@@ -37,7 +37,24 @@ describe "Users API" do
 
       # expect(user[:attributes][:games_list]).to be_a Array
       # expect(user[:attributes][:games_list]).to eq User.find(user[:id]).games_list
-
     end
+  end
+
+  it 'Can return data for a specific User' do
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+
+    get api_v1_user_path(user)
+
+    result = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    expect(response).to be_successful
+
+    expect(result).to have_key(:id)
+    expect(result[:id]).to be_a(String)
+    expect(result[:type]).to eq("user")
+    expect(result[:attributes]).to have_key(:gamertag)
+    expect(result[:attributes][:gamertag]).to be_a(String)
+    expect(result[:attributes]).to have_key(:platform)
+    expect(result[:attributes][:platform]).to be_a(String)
   end
 end
