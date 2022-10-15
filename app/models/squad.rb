@@ -9,5 +9,4 @@ class Squad < ApplicationRecord
   has_many :users, through: :user_squads
 end
 
-# Need to figure out how to default number_players to 4
 # Do we want to separate day and time to different variables? Could create issues with time zones (e.g. 11PM PST will be 2AM EST on the next day, but day won't get updated)
