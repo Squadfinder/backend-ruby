@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_10_15_164205) do
     t.string "game"
     t.string "day"
     t.string "time"
-    t.integer "number_players"
+    t.integer "number_players", default: 4
     t.boolean "competitive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
