@@ -5,5 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-test_user = User.create!(name: 'test')
-test_user_2 = User.create!(name: 'test2')
+test_user = User.create!(gamertag: 'test', platform: 'x-box')
+test_user_2 = User.create!(gamertag: 'test2', platform: 'x-box')
