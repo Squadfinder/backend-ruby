@@ -8,6 +8,7 @@ describe 'Game API' do
     data = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
+    expect(response.status).to eq(200)
     expect(data).to be_a(Hash)
     expect(data).to have_key(:title)
     expect(data[:title]).to eq("Portal 2")
