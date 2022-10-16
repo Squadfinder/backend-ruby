@@ -3,6 +3,7 @@ class Api::V1::GamesController < ApplicationController
 
   def show
     game = RawgFacade.get_game(params[:game_id])
+
     render json: game
   end
 

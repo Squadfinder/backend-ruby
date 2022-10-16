@@ -5,7 +5,7 @@ class Game
     @id = data[:id]
     @title = data[:name]
     @image = data[:background_image]
-    @genres = data[:genres]
+    @genres = Game.get_genres(data)
     @consoles = Game.get_console_names(data)
   end
 
@@ -20,6 +20,6 @@ class Game
   end
 
   def self.get_genres(data)
-    
+    data[:genres].map { |g| g[:name] }
   end
 end
