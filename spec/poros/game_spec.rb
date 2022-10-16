@@ -16,14 +16,18 @@ RSpec.describe Game do
           }
         ],
         parent_platforms: [
+        {
           platform: {
             name: "Xbox"
-          },
+        }
+        },
+        {
           platform: {
             name: "Playstation"
-          },
+        }
+        }
         ]
-      }
+        }
 
       game = Game.new(data)
 
