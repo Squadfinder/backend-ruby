@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   namespace :api do
     namespace :v1 do
+      get '/games/:game_id', to: 'games#show' 
       resources :users, only: [ :index, :show ] 
     end
   end
