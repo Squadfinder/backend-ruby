@@ -1,5 +1,5 @@
 class Game
-  attr_reader :id, :title, :image, :genres, :consoles
+  attr_reader :id, :title, :image, :genres, :consoles, :description
 
   def initialize(data)
     @id = data[:id]
@@ -7,6 +7,7 @@ class Game
     @image = data[:background_image]
     @genres = Game.get_genres(data)
     @consoles = Game.get_console_names(data)
+    @description = data[:description]
   end
 
   def self.get_console_names(data)
