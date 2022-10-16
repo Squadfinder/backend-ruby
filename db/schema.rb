@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_15_164205) do
+ActiveRecord::Schema.define(version: 4) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "squads", force: :cascade do |t|
     t.string "game"
-    t.string "day"
-    t.string "time"
+    t.datetime "event_time"
     t.integer "number_players", default: 4
     t.boolean "competitive"
     t.datetime "created_at", null: false
@@ -28,6 +27,8 @@ ActiveRecord::Schema.define(version: 2022_10_15_164205) do
   create_table "user_games", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "game_id"
+    t.string "image_url"
+    t.string "game_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_games_on_user_id"
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(version: 2022_10_15_164205) do
   create_table "user_squads", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "squad_id"
+    t.integer "host_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["squad_id"], name: "index_user_squads_on_squad_id"

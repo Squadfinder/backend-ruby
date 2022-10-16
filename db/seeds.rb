@@ -9,3 +9,6 @@ blake = User.create!(gamertag: 'blake', platform: 'PC')
 mike = User.create!(gamertag: 'mike', platform: 'PS5')
 thomas = User.create!(gamertag: 'thomas', platform: 'XBox')
 
+test_squad = Squad.create!(game: 'WoW', event_time: Time.now, competitive: 'true')
+
+test_user_squad = UserSquad.create!(user_id: blake.id, squad_id: test_squad.id, host_id: blake.id)
