@@ -6,6 +6,20 @@ class Game
     @title = data[:name]
     @image = data[:background_image]
     @genres = data[:genres]
-    @consoles = data[:parent_platforms]
+    @consoles = Game.get_console_names(data)
+  end
+
+  def self.get_console_names(data)
+    consoles = []
+    data[:parent_platforms].each do |platform|
+      platform.each do |p|
+      consoles << p[1][:name]
+      end
+    end
+    consoles
+  end
+
+  def self.get_genres(data)
+    
   end
 end

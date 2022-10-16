@@ -38,5 +38,36 @@ RSpec.describe Game do
       expect(game.genres).to be_a(Array)
       expect(game.consoles).to be_a(Array)
     end
+
+    it 'can return just consoles names in an Array' do
+      data = {
+        id: 4200,
+        name: 'Portal 2',
+        background_image: "https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
+        genres: [
+          {
+            "name": "Shooter"
+          },
+          {
+            "name": "Puzzle"
+          }
+        ],
+        parent_platforms: [
+        {
+          platform: {
+            name: "Xbox"
+        }
+        },
+        {
+          platform: {
+            name: "Playstation"
+        }
+        }
+        ]
+        }
+
+      game = Game.new(data)
+      expect(game.consoles).to eq(["Xbox", "Playstation"])
+    end
   end
 end 
