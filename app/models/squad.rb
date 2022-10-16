@@ -1,7 +1,6 @@
 class Squad < ApplicationRecord
   validates_presence_of :game
-  validates_presence_of :day
-  validates_presence_of :time
+  validates_presence_of :event_time
   validates_presence_of :number_players
   validates_numericality_of :number_players, only_integer: true
   validates_presence_of :competitive
