@@ -5,4 +5,8 @@ class UserGame < ApplicationRecord
   validates_presence_of :game_title
 
   belongs_to :user
+
+  def self.list(user_id)
+    where(user_id: user_id)
+  end
 end
