@@ -13,7 +13,7 @@ describe 'UserSquads API' do
     league_squad = UserSquad.create!(user_id: user.id, squad_id: league.id, host_id: user_2.id)
     wow_squad = UserSquad.create!(user_id: user_2.id, squad_id: wow.id, host_id: user_2.id)
 
-    get  api_v1_user_user_squads_path(user)
+    get  api_v1_user_squads_path(user)
 
     result = JSON.parse(response.body, symbolize_names: true)
 

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
       resources :games, only: [ :show ]
       resources :squads, only: [ :create ]
       resources :users, only: [ :index, :show ] do
-        resources :usergames
-        resources :user_squads
+        resources :games, only: [ :index ], controller: 'users/games'
+        resources :squads, only: [ :index ], controller: 'users/squads'
       end
     end  
   end

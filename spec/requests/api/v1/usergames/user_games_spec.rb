@@ -12,7 +12,7 @@ describe "Users games" do
     usergame4 = UserGame.create!(user_id: user.id, game_id: 2356, image_url: "www.pic.com/image.img", game_title: "Rocket Leauge")
     usergame5 = UserGame.create!(user_id: user2.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
-    get api_v1_user_usergames_path(user)
+    get api_v1_user_games_path(user)
 
     result = JSON.parse(response.body, symbolize_names: true)[:data]
 
