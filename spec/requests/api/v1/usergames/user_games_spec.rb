@@ -30,8 +30,47 @@ describe "Users games" do
 
     expect(result[1][:attributes]).to have_key(:image_url)
     expect(result[1][:attributes][:image_url]).to be_a(String)
-    
+
     expect(result[1][:attributes]).to have_key(:game_title)
     expect(result[1][:attributes][:game_title]).to be_a(String)
   end
+
+  it 'can delete a user game' do
+
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+
+    usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
+
+    get api_v1_user_usergames_path(user)
+
+    result = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    expect(response).to be_successful
+    expect(result.count).to eq(1)
+
+    delete "/api/v1/users/#{user.id}/usergames/#{usergame1.id}"
+
+    expect(UserGame.count).to eq(0)
+
+  end
+
+  it 'return error 404 if can not delete a user game' do
+
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+
+    usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
+
+    get api_v1_user_usergames_path(user)
+
+    result = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    expect(response).to be_successful
+    expect(result.count).to eq(1)
+
+    delete "/api/v1/users/#{user.id}/usergames/25"
+
+     expect(response).to have_http_status(404)
+
+  end
+  
 end
