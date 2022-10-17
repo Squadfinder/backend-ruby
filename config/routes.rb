@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/games/:game_id', to: 'games#show' 
-      resources :users, only: [ :index, :show ] 
       resources :squads, only: [ :create ]
+      resources :users, only: [ :index, :show ] do
+        resources :usergames 
+      end
     end
   end
 end
