@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'RestaurantsFacade' do
-  it 'returns instances of restaurants', :vcr do
+RSpec.describe 'RawgSearchFacade' do
+  it 'returns instances of games', :vcr do
     games = RawgSearchFacade.get_name('call of duty')
     expect(games).to be_a(Array)
     expect(games.length).to eq(20)
