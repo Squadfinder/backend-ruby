@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe 'Games API' do
   it 'sends a list of games', :vcr do
-    get '/api/v1/rawg_search?search=dogs'
+    get '/api/v1/search?search=dogs'
 
     expect(response).to be_successful
     expect(response.status).to eq(200)
