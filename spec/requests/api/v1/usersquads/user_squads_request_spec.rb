@@ -19,5 +19,19 @@ describe 'UserSquads API' do
 
     expect(response).to be_successful
     expect(response.status).to eq(201)
+    expect(result[0]).to have_key(:id)
+    expect(result[0][:id]).to be_a(Integer)
+    expect(result[0]).to have_key(:user_id)
+    expect(result[0][:user_id]).to be_a(Integer)
+    expect(result[0]).to have_key(:squad_id)
+    expect(result[0][:squad_id]).to be_a(Integer)
+    expect(result[0]).to have_key(:host_id)
+    expect(result[0][:host_id]).to be_a(Integer)
+    expect(result[0]).to have_key(:status)
+    expect(result[0][:status]).to be_a(String)
+    expect(result[0]).to have_key(:created_at)
+    expect(result[0][:created_at]).to be_a(String)
+    expect(result[0]).to have_key(:updated_at)
+    expect(result[0][:updated_at]).to be_a(String)
   end
 end
