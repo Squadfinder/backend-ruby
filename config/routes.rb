@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   root 'welcome#index'
   namespace :api do
     namespace :v1 do
-      resources :rawg_search
+      resources :search, controller: "rawg_search"
       resources :games, only: [ :show ]
       resources :squads, only: [ :create ]
       resources :users, only: [ :index, :show ] do
-        resources :usergames 
+        resources :usergames
       end
-    end
+    end  
   end
 end
