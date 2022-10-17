@@ -13,8 +13,6 @@ RSpec.describe RawgSearchService do
       expect(response[:id]).to be_a(Integer)
       expect(response).to have_key(:name)
       expect(response[:name]).to be_a(String)
-      expect(response).to have_key(:description)
-      expect(response[:description]).to be_a(String)
       expect(response).to have_key(:background_image)
       expect(response[:background_image]).to be_a(String)
       expect(response).to have_key(:parent_platforms)
