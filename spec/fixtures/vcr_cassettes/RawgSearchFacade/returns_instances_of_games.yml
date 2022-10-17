@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 17 Oct 2022 18:15:08 GMT
+      - Mon, 17 Oct 2022 18:15:07 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -45,7 +45,7 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Report-To:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2F%2BnFypQZI8tYA2QS2YHQ1hvSiA85lBbPoS7tIUhHvWdXBm5sd0GLYYsUon5WtM0PsJsPgQ%2FV04nvnSXlRMDoFvyDGaK2XY9Cry%2BnnSo0t1EPL0LCRZmBAF%2BiMbyh"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=y%2B3EDuJAeSej%2F6aO6GnyhKZnKsSoU8SksIgZJr5w30rNC9eJa6O%2FiPX9FgQZ%2Fi5ekvxBZufucsdQtoPdUGiOOA4lafmCzKluCMjfqHzUHCW34Sebvv%2F%2Bse8U7MKz"}],"group":"cf-nel","max_age":604800}'
       Nel:
       - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
       Strict-Transport-Security:
@@ -53,7 +53,7 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 75bb0492afc85f5b-LAS
+      - 75bb048a78f95f49-LAS
     body:
       encoding: UTF-8
       string: '{"count":51774,"next":"https://api.rawg.io/api/games?key=<RAWG API
@@ -319,5 +319,5 @@ http_interactions:
         игра по сети","slug":"sovmestnaia-igra-po-seti","language":"rus","games_count":1229,"image_background":"https://media.rawg.io/media/games/0bd/0bd5646a3d8ee0ac3314bced91ea306d.jpg"},{"id":42416,"name":"Контроллер","slug":"kontroller","language":"rus","games_count":2894,"image_background":"https://media.rawg.io/media/games/e04/e04963f3ac4c4fa83a1dc0b9231e50db.jpg"},{"id":42436,"name":"Тактика","slug":"taktika","language":"rus","games_count":2270,"image_background":"https://media.rawg.io/media/games/476/476178ef18ab0534771d099f51cdc694.jpg"},{"id":115,"name":"Controller","slug":"controller","language":"eng","games_count":8245,"image_background":"https://media.rawg.io/media/games/ac2/ac25b5cef220bf5b8d052e0978451cab.jpg"},{"id":80,"name":"Tactical","slug":"tactical","language":"eng","games_count":3609,"image_background":"https://media.rawg.io/media/games/be9/be9cf02720c9326e11d0fda14518554f.jpg"},{"id":63,"name":"Zombies","slug":"zombies","language":"eng","games_count":9224,"image_background":"https://media.rawg.io/media/games/8ca/8ca40b562a755d6a0e30d48e6c74b178.jpg"},{"id":70,"name":"War","slug":"war","language":"eng","games_count":8271,"image_background":"https://media.rawg.io/media/games/8ee/8eed88e297441ef9202b5d1d35d7d86f.jpg"},{"id":42453,"name":"ММО","slug":"mmo-2","language":"rus","games_count":2017,"image_background":"https://media.rawg.io/media/games/179/179245a3693049a11a25b900ab18f8f7.jpg"},{"id":42430,"name":"Война","slug":"voina","language":"rus","games_count":1493,"image_background":"https://media.rawg.io/media/games/c81/c812e158129e00c9b0f096ae8a0bb7d6.jpg"},{"id":167,"name":"Futuristic","slug":"futuristic","language":"eng","games_count":3749,"image_background":"https://media.rawg.io/media/games/951/951572a3dd1e42544bd39a5d5b42d234.jpg"},{"id":11,"name":"Team-Based","slug":"team-based","language":"eng","games_count":1158,"image_background":"https://media.rawg.io/media/games/c7a/c7a71a0531a9518236d99d0d60abe447.jpg"},{"id":42450,"name":"Командная","slug":"komandnaia","language":"rus","games_count":849,"image_background":"https://media.rawg.io/media/games/83f/83f6f70a7c1b86cd2637b029d8b42caa.jpg"},{"id":42451,"name":"Будущее","slug":"budushchee","language":"rus","games_count":1951,"image_background":"https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"},{"id":40856,"name":"Valve
         Anti-Cheat enabled","slug":"valve-anti-cheat-enabled","language":"eng","games_count":104,"image_background":"https://media.rawg.io/media/games/736/73619bd336c894d6941d926bfd563946.jpg"},{"id":406,"name":"Story","slug":"story","language":"eng","games_count":10869,"image_background":"https://media.rawg.io/media/games/615/615e9fc0a325e0d87b84dad029b8b7b9.jpg"},{"id":808,"name":"character","slug":"character","language":"eng","games_count":8409,"image_background":"https://media.rawg.io/media/games/b1f/b1f1eeee149ef49c008a2258ee6c0d78.jpg"},{"id":974,"name":"death","slug":"death","language":"eng","games_count":3606,"image_background":"https://media.rawg.io/media/games/f61/f61cc8e0bce08615d90918e428aa5dc9.jpg"}],"esrb_rating":{"id":4,"name":"Mature","slug":"mature","name_en":"Mature","name_ru":"С
         17 лет"},"user_game":null,"reviews_count":1208,"saturated_color":"0f0f0f","dominant_color":"0f0f0f","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/8ee/8eed88e297441ef9202b5d1d35d7d86f.jpg"},{"id":126049,"image":"https://media.rawg.io/media/screenshots/c5c/c5c52956aaa535f92067f8dbb94ed792.jpg"},{"id":126050,"image":"https://media.rawg.io/media/screenshots/898/898c3ea7d05d437208adf5c7098b87d4.jpg"},{"id":126051,"image":"https://media.rawg.io/media/screenshots/490/490cd725bd80c0bc2359a0405ee21213.jpg"},{"id":126052,"image":"https://media.rawg.io/media/screenshots/fd0/fd0fe49f4a55f6f1af36aaacf0d92051.jpg"},{"id":126053,"image":"https://media.rawg.io/media/screenshots/b75/b7525f0077cf7d7ec6c055f2b51614ef.jpg"},{"id":126054,"image":"https://media.rawg.io/media/screenshots/8f7/8f75918847ba00b554ed6ba2e9cef848.jpg"}],"parent_platforms":[{"platform":{"id":1,"name":"PC","slug":"pc"}},{"platform":{"id":2,"name":"PlayStation","slug":"playstation"}},{"platform":{"id":3,"name":"Xbox","slug":"xbox"}},{"platform":{"id":7,"name":"Nintendo","slug":"nintendo"}}],"genres":[{"id":2,"name":"Shooter","slug":"shooter"},{"id":4,"name":"Action","slug":"action"}]}],"user_platforms":false}'
-  recorded_at: Mon, 17 Oct 2022 18:15:08 GMT
+  recorded_at: Mon, 17 Oct 2022 18:15:07 GMT
 recorded_with: VCR 6.1.0
