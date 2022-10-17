@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/games/:game_id', to: 'games#show' 
       resources :users, only: [ :index, :show ] 
+      resources :squads, only: [ :create ]
     end
   end
 end
