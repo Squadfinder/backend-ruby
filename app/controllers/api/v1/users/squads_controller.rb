@@ -1,4 +1,4 @@
-class Api::V1::UserSquadsController < ApplicationController
+class Api::V1::Users::SquadsController < ApplicationController
   
   def index
     user = User.find_by(params[:id]) 
