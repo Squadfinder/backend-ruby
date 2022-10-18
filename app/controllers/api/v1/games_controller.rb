@@ -12,4 +12,4 @@ class Api::V1::GamesController < ApplicationController
       render json: { data: {} }, status:400
     end
   end
-end
+end 
