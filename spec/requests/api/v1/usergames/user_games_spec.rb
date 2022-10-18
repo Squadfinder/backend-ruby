@@ -41,17 +41,16 @@ describe "Users games" do
 
     usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
-    get api_v1_user_usergames_path(user)
+    get api_v1_user_games_path(user)
 
     result = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(response).to be_successful
     expect(result.count).to eq(1)
 
-    delete "/api/v1/users/#{user.id}/usergames/#{usergame1.id}"
+    delete api_v1_user_game_path(user, usergame1)
 
     expect(UserGame.count).to eq(0)
-
   end
 
   it 'return error 404 if can not delete a user game' do
@@ -60,17 +59,15 @@ describe "Users games" do
 
     usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
-    get api_v1_user_usergames_path(user)
+    get api_v1_user_games_path(user)
 
     result = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(response).to be_successful
     expect(result.count).to eq(1)
 
-    delete "/api/v1/users/#{user.id}/usergames/25"
+    delete api_v1_user_game_path(user, 25)
 
-     expect(response).to have_http_status(404)
-
+    expect(response).to have_http_status(404)
   end
-  
 end
