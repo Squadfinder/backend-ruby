@@ -73,42 +73,21 @@ describe "Squads API" do
 
     response_body = JSON.parse(response.body, symbolize_names: true)
     squads = UserSquad.all
-    
-    expect(squads[0].user_id).to eq(529)
-    expect(squads[0].squad_id).to eq(161)
-    expect(squads[0].host_id).to eq(529)
+
+    expect(squads[0].user_id).to eq(user_1.id)
+    expect(squads[0].host_id).to eq(user_1.id)
     expect(squads[0].status).to eq("approved")
-   
-    # expect(response_body.keys.count).to eq 1
-    # expect(response_body.keys).to include(:data)
 
-    # expect(response_body[:data]).to be_a Hash
-    # expect(response_body[:data].keys.count).to eq 3
-    # expect(response_body[:data].keys).to include(:id, :type, :attributes)
+    expect(squads[1].user_id).to eq(user_2.id)
+    expect(squads[1].host_id).to eq(user_1.id)
+    expect(squads[1].status).to eq("approved")
 
-    # expect(response_body[:data][:id]).to be_a String    
-    # expect(response_body[:data][:id]).to eq Squad.last.id.to_s
+    expect(squads[2].user_id).to eq(user_3.id)
+    expect(squads[2].host_id).to eq(user_1.id)
+    expect(squads[2].status).to eq("approved")
 
-    # expect(response_body[:data][:type]).to be_a String
-    # expect(response_body[:data][:type]).to eq 'squad'
-
-    # # Do we need to update this to include UserSquad members?
-    # expect(response_body[:data][:attributes]).to be_a Hash
-    # expect(response_body[:data][:attributes].keys.count).to eq 4
-    # expect(response_body[:data][:attributes].keys).to include(:game, :event_time, :number_players, :competitive)
-
-    # expect(response_body[:data][:attributes][:game]).to be_a String
-    # expect(response_body[:data][:attributes][:game]).to eq Squad.last.game
-
-    # expect(response_body[:data][:attributes][:event_time]).to be_a String
-    # # expect(response_body[:data][:attributes][:event_time]).to eq Squad.last.event_time
-
-    # expect(response_body[:data][:attributes][:number_players]).to be_a Integer
-    # expect(response_body[:data][:attributes][:number_players]).to eq Squad.last.number_players
-
-    # expect(response_body[:data][:attributes][:competitive]).to eq (true || false)
-    # expect(response_body[:data][:attributes][:competitive]).to eq Squad.last.competitive
-
-    # expect(UserSquad.last.user).to eq user_1
+    expect(squads[3].user_id).to eq(user_4.id)
+    expect(squads[3].host_id).to eq(user_1.id)
+    expect(squads[3].status).to eq("approved")
   end
 end

@@ -37,13 +37,21 @@ describe 'UserSquads API' do
 
   it 'Can create a new UserSquad when given a host and a squad with the status as pending' do
     host_user = create(:user)
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
+    user_3 = User.create!(gamertag: 'thomas', platform: 'XBox')
+    user_4 = User.create!(gamertag: 'wes', platform: 'XBox')
 
     create_squad_body = {
       'user': host_user.id,
       'game':  Faker::Game.title,
       'event_time': Faker::Time.forward(days: 5),
       'number_players': 3,
-      'competitive': true
+      'competitive': true,
+      'squadMembers': [
+      user_2,
+      user_3,
+      user_4
+    ]
     }
 
     post api_v1_squads_path(create_squad_body)
