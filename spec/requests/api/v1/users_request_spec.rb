@@ -43,10 +43,15 @@ describe "Users API" do
   it 'Can return data for a specific User' do
     user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
 
+    usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
+    usergame2 = UserGame.create!(user_id: user.id, game_id: 2387, image_url: "www.pic.com/image.img", game_title: "Squad")
+    usergame3 = UserGame.create!(user_id: user.id, game_id: 2323, image_url: "www.pic.com/image.img", game_title: "Scorn")
+    usergame4 = UserGame.create!(user_id: user.id, game_id: 2356, image_url: "www.pic.com/image.img", game_title: "Rocket Leauge")
+
     get api_v1_user_path(user)
 
-    result = JSON.parse(response.body, symbolize_names: true)[:data]
-
+    result = JSON.parse(response.body, symbolize_names: true)
+# binding.pry
     expect(response).to be_successful
 
     expect(result).to have_key(:id)
