@@ -12,7 +12,7 @@ describe "Users games" do
     usergame4 = UserGame.create!(user_id: user.id, game_id: 2356, image_url: "www.pic.com/image.img", game_title: "Rocket Leauge")
     usergame5 = UserGame.create!(user_id: user2.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
-    get api_v1_user_usergames_path(user)
+    get api_v1_user_games_path(user)
 
     result = JSON.parse(response.body, symbolize_names: true)[:data]
 
@@ -35,51 +35,39 @@ describe "Users games" do
     expect(result[1][:attributes][:game_title]).to be_a(String)
   end
 
-  it "is able to create a user games" do
+  it 'can delete a user game' do
 
     user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-    user2 = User.create!(gamertag: "HelloSaltyImDad", platform: "x-box")
 
-    create_user_games = {
-      'user_id': user.id,
-      'game_id':  2356,
-      'image_url': "www.pic.com/image.img",
-      'game_title': "pokemon"
-    }
+    usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
-    post api_v1_user_usergames_path(create_user_games)
+    get api_v1_user_games_path(user)
+
+    result = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(response).to be_successful
-    expect(response.status).to eq(201)
+    expect(result.count).to eq(1)
 
-    result = JSON.parse(response.body, symbolize_names: true)
-    expect(UserGame.count).to eq(1)
+    delete api_v1_user_game_path(user, usergame1)
 
-    expect(result[:data]).to have_key(:id)
-    expect(result[:data][:attributes]).to have_key(:user_id)
-    expect(result[:data][:attributes]).to have_key(:game_id)
-    expect(result[:data][:attributes]).to have_key(:image_url)
-    expect(result[:data][:attributes]).to have_key(:game_title)
+    expect(UserGame.count).to eq(0)
   end
 
-  it "ia not able to create a game if it does not have a vaild user" do
+  it 'return error 404 if can not delete a user game' do
 
-        user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-        user2 = User.create!(gamertag: "HelloSaltyImDad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
 
-        create_user_games = {
-          'user_id': "happy guy",
-          'game_id':  2356,
-          'image_url': "www.pic.com/image.img",
-          'game_title': "pokemon"
-        }
+    usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
-        post api_v1_user_usergames_path(create_user_games)
+    get api_v1_user_games_path(user)
 
-        expect(response).to_not be_successful
-        expect(response.status).to eq(401)
+    result = JSON.parse(response.body, symbolize_names: true)[:data]
 
-        result = JSON.parse(response.body, symbolize_names: true)
-        expect(UserGame.count).to eq(0)
+    expect(response).to be_successful
+    expect(result.count).to eq(1)
+
+    delete api_v1_user_game_path(user, 25)
+
+    expect(response).to have_http_status(404)
   end
 end
