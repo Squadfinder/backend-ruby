@@ -9,7 +9,7 @@ describe "Users API" do
     expect(response).to be_successful
 
     all_users = JSON.parse(response.body, symbolize_names: true)
-    
+
     expect(all_users).to be_a Hash
 
     all_users[:data].each do |user|
@@ -43,18 +43,29 @@ describe "Users API" do
   it 'Can return data for a specific User' do
     user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
 
+    usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
+    usergame2 = UserGame.create!(user_id: user.id, game_id: 2387, image_url: "www.pic.com/image.img", game_title: "Squad")
+    usergame3 = UserGame.create!(user_id: user.id, game_id: 2323, image_url: "www.pic.com/image.img", game_title: "Scorn")
+    usergame4 = UserGame.create!(user_id: user.id, game_id: 2356, image_url: "www.pic.com/image.img", game_title: "Rocket Leauge")
+
     get api_v1_user_path(user)
 
-    result = JSON.parse(response.body, symbolize_names: true)[:data]
+    result = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
 
-    expect(result).to have_key(:id)
-    expect(result[:id]).to be_a(String)
-    expect(result[:type]).to eq("user")
-    expect(result[:attributes]).to have_key(:gamertag)
-    expect(result[:attributes][:gamertag]).to be_a(String)
-    expect(result[:attributes]).to have_key(:platform)
-    expect(result[:attributes][:platform]).to be_a(String)
+    expect(result).to have_key(:gamertag)
+    expect(result[:gamertag]).to be_a(String)
+    expect(result).to have_key(:platform)
+    expect(result[:platform]).to be_a(String)
+    expect(result).to have_key(:games_list)
+    expect(result[:games_list]).to be_a(Array)
+    expect(result[:games_list].count).to eq(4)
+    expect(result[:games_list][0]).to have_key(:game_id)
+    expect(result[:games_list][0][:game_id]).to be_a(Integer)
+    expect(result[:games_list][0]).to have_key(:game_title)
+    expect(result[:games_list][0][:game_title]).to be_a(String)
+    expect(result[:games_list][0]).to have_key(:image_url)
+    expect(result[:games_list][0][:image_url]).to be_a(String)
   end
 end

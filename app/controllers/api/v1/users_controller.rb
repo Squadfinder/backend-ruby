@@ -4,6 +4,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    render json: UserSerializer.new(User.find(params[:id]))
+    render json: UserShowSerializer.format_user(User.find(params[:id]), UserGame.list(params[:id]))
   end
 end
