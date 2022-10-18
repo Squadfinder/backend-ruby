@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Game API' do 
+describe 'Games API' do 
   it 'return a serialized response to a get specific game request', :vcr do
 
     get "/api/v1/games/4200"

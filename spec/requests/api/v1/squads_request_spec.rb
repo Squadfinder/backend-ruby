@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Users API" do
+describe "Squads API" do
   it 'Can create a squad and a UserSquad -- making the user creating it the host' do
     user_1 = create(:user)
 
