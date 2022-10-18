@@ -3,7 +3,7 @@ class Squad < ApplicationRecord
   validates_presence_of :event_time
   validates_presence_of :number_players
   validates_numericality_of :number_players, only_integer: true
-  validates_presence_of :competitive
+  validates_inclusion_of :competitive, in: [true, false]
   has_many :user_squads
   has_many :users, through: :user_squads
 end
