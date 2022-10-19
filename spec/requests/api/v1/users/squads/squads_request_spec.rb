@@ -89,4 +89,20 @@ describe 'UserSquads API' do
     expect(response_body[:created_at]).to be_a String
     expect(response_body[:updated_at]).to be_a String
   end
+
+  it 'Can delete UserSquad association' do
+    user_1 = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
+    user_3 = User.create!(gamertag: "bad", platform: "xbox")
+    rocket = Squad.create!(game: 'Rocket League', event_time: Time.now, competitive: 'true')
+    rocket_squad_user_1 = UserSquad.create!(user_id: user_1.id, squad_id: rocket.id, host_id: user_1.id)
+    rocket_squad_user_2 = UserSquad.create!(user_id: user_2.id, squad_id: rocket.id, host_id: user_1.id)
+    rocket_squad_user_3 = UserSquad.create!(user_id: user_3.id, squad_id: rocket.id, host_id: user_1.id)
+
+    delete api_v1_user_squad_path(user_2.id, rocket_squad_user_2.id)
+
+    expect(user_1.user_squads.count).to eq(1)
+    expect(user_2.user_squads.count).to eq(0)
+    expect(user_3.user_squads.count).to eq(1)
+  end
 end
