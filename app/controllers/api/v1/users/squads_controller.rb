@@ -9,4 +9,9 @@ class Api::V1::Users::SquadsController < ApplicationController
     user_squad = UserSquad.create!(user_id: params[:user_id], squad_id: params[:squad_id], host_id: params[:host_id])
     render json: user_squad, status: 201
   end
+
+  def destroy
+    user_squad = UserSquad.find(params[:id])
+    user_squad.destroy
+  end
 end
