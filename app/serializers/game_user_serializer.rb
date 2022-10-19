@@ -1,4 +1,4 @@
-class GamesUserSerializer
+class GameUserSerializer
   include JSONAPI::Serializer
   attributes :gamertag, :platform
 end

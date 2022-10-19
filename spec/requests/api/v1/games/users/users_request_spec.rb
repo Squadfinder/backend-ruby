@@ -10,44 +10,39 @@ describe "Game Users API" do
     usergame5 = UserGame.create!(user_id: User.fifth.id, game_id: 23598, image_url: "www.pic.com/image.img", game_title: "League of Legends")
     usergame6 = UserGame.create!(user_id: User.first.id, game_id: 23598, image_url: "www.pic.com/image.img", game_title: "League of Legends")
 
+    possible_ids = [ User.first.id, User.second.id, User.third.id]
+
     get api_v1_game_users_path(58751)
 
     expect(response).to be_successful
 
     all_users = JSON.parse(response.body, symbolize_names: true)
 
-    possible_ids = [ User.first.id, User.second.id, User.third.id]
     contained_ids = all_users[:data].map { |user| user[:id].to_i}
-
     expect(possible_ids).to eq contained_ids
-  end
 
-  it 'Can return data for a specific User' do
-    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+    expect(all_users).to be_a Hash
+    
+    expect(all_users.keys.count).to eq 1
+    expect(all_users.keys).to include(:data)
 
-    usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
-    usergame2 = UserGame.create!(user_id: user.id, game_id: 2387, image_url: "www.pic.com/image.img", game_title: "Squad")
-    usergame3 = UserGame.create!(user_id: user.id, game_id: 2323, image_url: "www.pic.com/image.img", game_title: "Scorn")
-    usergame4 = UserGame.create!(user_id: user.id, game_id: 2356, image_url: "www.pic.com/image.img", game_title: "Rocket Leauge")
+    all_users[:data].each do |game_user|
+      expect(game_user.keys.count).to eq 3
+      expect(game_user.keys).to include(:id, :type, :attributes)
 
-    get api_v1_user_path(user)
+      expect(game_user[:id]).to be_a String
+      expect(possible_ids).to include(game_user[:id].to_i)
 
-    result = JSON.parse(response.body, symbolize_names: true)[:data][:attributes]
+      expect(game_user[:type]).to be_a String
+      expect(game_user[:type]).to eq 'game_user'
 
-    expect(response).to be_successful
+      expect(game_user[:attributes]).to be_a Hash
+      expect(game_user[:attributes].keys.count).to eq 2
+      expect(game_user[:attributes].keys).to include(:gamertag, :platform)
 
-    expect(result).to have_key(:gamertag)
-    expect(result[:gamertag]).to be_a(String)
-    expect(result).to have_key(:platform)
-    expect(result[:platform]).to be_a(String)
-    expect(result).to have_key(:user_games)
-    expect(result[:user_games]).to be_a(Array)
-    expect(result[:user_games].count).to eq(4)
-    expect(result[:user_games][0]).to have_key(:game_id)
-    expect(result[:user_games][0][:game_id]).to be_a(Integer)
-    expect(result[:user_games][0]).to have_key(:game_title)
-    expect(result[:user_games][0][:game_title]).to be_a(String)
-    expect(result[:user_games][0]).to have_key(:image_url)
-    expect(result[:user_games][0][:image_url]).to be_a(String)
+      expect(game_user[:attributes][:gamertag]).to be_a String
+
+      expect(game_user[:attributes][:platform]).to be_a String
+    end
   end
 end
