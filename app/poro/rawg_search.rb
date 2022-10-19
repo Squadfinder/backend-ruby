@@ -1,7 +1,8 @@
 class RawgSearch
-  attr_reader :name, :platforms, :image, :genres
+  attr_reader :name, :platforms, :image, :genres, :game_id
 
   def initialize(data)
+    @game_id = data[:id]
     @name = data[:name]
     @platforms = platform(data)
     @image = data[:background_image]
