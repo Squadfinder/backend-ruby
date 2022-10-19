@@ -9,6 +9,14 @@ class Api::V1::SquadsController < ApplicationController
         host_id: user.id,
         status: 1
       )
+      params[:squadMembers].each do |member|
+        UserSquad.create!(
+          user_id: member.to_i,
+          squad_id: squad.id,
+          host_id: user.id,
+          status: 1
+        )
+      end
       render json: SquadSerializer.new(squad), status: 201
     end
   end
