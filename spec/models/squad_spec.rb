@@ -6,7 +6,7 @@ RSpec.describe Squad, type: :model do
     it { should validate_presence_of(:event_time) }
     it { should validate_presence_of(:number_players) }
     it { should validate_numericality_of(:number_players).is_a?(Integer) }
-    it { should validate_presence_of(:competitive) }
+    it { should validate_inclusion_of(:competitive).in_array([true, false]) }
   end
 
   describe 'relationships' do
