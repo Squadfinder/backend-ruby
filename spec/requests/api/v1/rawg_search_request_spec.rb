@@ -3,7 +3,12 @@ require 'rails_helper'
 
 RSpec.describe 'Games API' do
   it 'sends a list of games', :vcr do
-    get '/api/v1/search?search=dogs'
+    info = {
+      "search": "call of duty",
+      "genres": "null"
+    }
+
+    get api_v1_search_index_path(info)
 
     expect(response).to be_successful
     expect(response.status).to eq(200)
@@ -22,6 +27,8 @@ RSpec.describe 'Games API' do
       expect(game[:image]).to be_a String
       expect(game).to have_key(:genres)
       expect(game[:genres]).to be_a Array
+      expect(game).to have_key(:game_id)
+      expect(game[:game_id]).to be_a Integer
     end
   end
 end
