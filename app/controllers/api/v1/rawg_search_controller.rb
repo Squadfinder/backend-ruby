@@ -4,6 +4,9 @@ class Api::V1::RawgSearchController < ApplicationController
     if (search_params[:genres]) == "null"
       results = RawgSearchFacade.get_name(search_params[:search])
       render json: RawgSearchSerializer.format_games(results)
+    else
+      results_gen = RawgSearchFacade.get_name_and_genre(search_params[:search],search_params[:genres])
+      render json: results_gen
     end
   end
 
@@ -12,5 +15,4 @@ class Api::V1::RawgSearchController < ApplicationController
   def search_params
     params.permit(:search, :genres)
   end
-
 end
