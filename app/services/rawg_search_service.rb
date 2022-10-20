@@ -11,10 +11,20 @@ class RawgSearchService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-   def self.get_name(name)
+  def self.get_name(name)
    response = connection.get('/api/games') do |req|
      req.params['key'] = ENV['rawg_api_key']
      req.params['search'] = name
+     req.params['page_size'] = 20
+   end
+   data = JSON.parse(response.body, symbolize_names: true)
+ end
+
+  def self.get_name_and_genre(name, genres)
+   response = connection.get('/api/games') do |req|
+     req.params['key'] = ENV['rawg_api_key']
+     req.params['search'] = name
+     req.params['genres'] = genres
      req.params['page_size'] = 20
    end
    data = JSON.parse(response.body, symbolize_names: true)
