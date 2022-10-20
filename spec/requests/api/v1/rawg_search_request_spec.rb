@@ -5,7 +5,7 @@ RSpec.describe 'Games API' do
   it 'sends a list of games', :vcr do
     info = {
       "search": "call of duty",
-      "genres": "null"
+      "genres": ""
     }
 
     get api_v1_search_index_path(info)
