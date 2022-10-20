@@ -19,20 +19,49 @@ describe 'UserSquads API' do
 
     expect(response).to be_successful
     expect(response.status).to eq(201)
-    expect(result[0]).to have_key(:id)
-    expect(result[0][:id]).to be_a(Integer)
-    expect(result[0]).to have_key(:user_id)
-    expect(result[0][:user_id]).to be_a(Integer)
-    expect(result[0]).to have_key(:squad_id)
-    expect(result[0][:squad_id]).to be_a(Integer)
-    expect(result[0]).to have_key(:host_id)
-    expect(result[0][:host_id]).to be_a(Integer)
-    expect(result[0]).to have_key(:status)
-    expect(result[0][:status]).to be_a(String)
-    expect(result[0]).to have_key(:created_at)
-    expect(result[0][:created_at]).to be_a(String)
-    expect(result[0]).to have_key(:updated_at)
-    expect(result[0][:updated_at]).to be_a(String)
+    
+    expect(result).to be_a Hash
+    expect(result.keys.count).to eq 1
+    expect(result.keys).to include(:data)
+
+    expect(result[:data]).to be_a Array
+
+    result[:data].each do |user_squad|
+      expect(user_squad).to be_a Hash
+      expect(user_squad.keys.count).to eq 3
+      expect(user_squad.keys).to include(:id, :type, :attributes)
+
+      expect(user_squad[:id]).to be_a String
+
+      expect(user_squad[:type]).to be_a String
+      expect(user_squad[:type]).to eq 'user_squad'
+
+      expect(user_squad[:attributes]).to be_a Hash
+      expect(user_squad[:attributes].keys.count).to eq 1
+      expect(user_squad[:attributes].keys).to include(:squad)
+
+      expect(user_squad[:attributes][:squad]).to be_a Hash
+      expect(user_squad[:attributes][:squad].keys.count).to eq 5
+      expect(user_squad[:attributes][:squad].keys).to include(:game, :event_time, :number_players, :competitive, :members)
+
+      expect(user_squad[:attributes][:squad][:game]).to be_a String
+      expect(user_squad[:attributes][:squad][:event_time]).to be_a String
+      expect(user_squad[:attributes][:squad][:number_players]).to be_a Integer
+      # expect(user_squad[:attributes][:squad][:competitive]).to be_a Boolean
+      
+      expect(user_squad[:attributes][:squad][:members]).to be_a Array
+      user_squad[:attributes][:squad][:members].each do |member|
+        expect(member).to be_a Hash
+        expect(member.keys.count).to eq 5
+        expect(member.keys).to include(:id, :gamertag, :platform, :created_at, :updated_at)
+
+        expect(member[:id]).to be_a Integer
+        expect(member[:gamertag]).to be_a String
+        expect(member[:platform]).to be_a String
+        expect(member[:created_at]).to be_a String
+        expect(member[:updated_at]).to be_a String
+      end
+    end
   end
 
   it 'Can delete UserSquad association' do
