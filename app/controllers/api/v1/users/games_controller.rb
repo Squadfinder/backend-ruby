@@ -5,12 +5,11 @@ class Api::V1::Users::GamesController < ApplicationController
   end
 
   def create
-    user = User.find_by_id(params[:user_id])
     user_game = UserGame.new(user_game_params)
     if user_game.save
       render json: UserGameSerializer.new(user_game), status: 201
     else
-      render json: { error: 'Email Or Password Is Incorrect' }, status: 401
+      render json: { error: 'Parmas Are Incorrect' }, status: 401
     end
   end
 
