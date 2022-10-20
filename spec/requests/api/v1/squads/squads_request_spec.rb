@@ -48,7 +48,7 @@ describe "Squads API" do
     expect(response_body[:data][:attributes][:competitive]).to eq Squad.last.competitive
   end
 
-  it 'Creates UserSquad association for each member of the squad' do
+  it 'Creates UserSquad association for each member of the squad when a squad is formed' do
     user_1 = create(:user)
     user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
     user_3 = User.create!(gamertag: 'thomas', platform: 'XBox')
