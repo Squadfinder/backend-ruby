@@ -1,7 +1,7 @@
 class Api::V1::RawgSearchController < ApplicationController
 
   def index
-    if (search_params[:genres]) == "null"
+    if search_params[:genres].nil?
       results = RawgSearchFacade.get_name(search_params[:search])
       render json: RawgSearchSerializer.format_games(results)
     else
