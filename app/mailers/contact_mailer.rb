@@ -1,10 +1,8 @@
 class ContactMailer < ApplicationMailer
-  default from: 'notifications@test.com'
+  default from: 'squadfinder2205@gmail.com'
 
-  CONTACT_EMAIL = "squadfinder2205@gmail.com"
-
-  def submission
-    @message = "You have been invited to join a squad"
-    mail(to: CONTACT_EMAIL, subject: 'squad mailer test')
+  def submission(user, squad, host)
+    @message = "#{user.gamertag} has been invited to join a squad for #{squad.game} by #{host.gamertag}."
+    mail(to: "squadfinder2205@gmail.com", subject: "#{user.gamertag} invited to play #{squad.game}.")
   end
 end
