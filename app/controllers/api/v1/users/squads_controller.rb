@@ -5,7 +5,7 @@ class Api::V1::Users::SquadsController < ApplicationController
       squads = UserSquad.where(user_id: user.id)
       render json: UserSquadSerializer.new(squads), status: 201
     else
-      render json: { description: "Error: User not found"}, status: 404
+      render json: { description: "Error: User not found" }, status: 404
     end
   end
 
@@ -16,7 +16,12 @@ class Api::V1::Users::SquadsController < ApplicationController
   end
 
   def destroy
-    user_squad = UserSquad.find(params[:id])
-    user_squad.destroy
+    user_squad = UserSquad.find_by(id: params[:id])
+    if !user_squad.nil?
+      user_squad.destroy
+      render json: { description: "UserSquad deleted successfully" }, status: 204 
+    else
+      render json: { description: "Error: UserSquad not found" }, status: 404
+    end
   end
 end
