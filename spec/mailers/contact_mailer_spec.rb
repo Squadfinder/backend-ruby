@@ -9,9 +9,9 @@ RSpec.describe ContactMailer, type: :mailer do
     halo = Squad.create!(game: 'Halo', event_time: Time.now, competitive: 'true')
 
     email = ContactMailer.submission(user, halo, user_2).deliver_now
-    
+
     expect(email.subject).to eq("sorryIMbad invited to play Halo.")
-    expect(email.to).to eq(["squadfinder2205@gmail.com"])
+    expect(email.to).to eq(["squadfindermailer@gmail.com"])
     expect(email.from).to eq(["squadfinder2205@gmail.com"])
 
     expect(email.body.encoded).to match("sorryIMbad has been invited to join a squad for Halo by IMbad.")
