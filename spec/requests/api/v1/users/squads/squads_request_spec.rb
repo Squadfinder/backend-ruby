@@ -64,6 +64,19 @@ describe 'UserSquads API' do
     end
   end
 
+  it 'Returns an error if a User does not exist with the given ID' do
+
+    get api_v1_user_squads_path(9001)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq 404
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(result.keys).to include(:description)
+    expect(result[:description]).to eq 'Error: User not found'
+  end
+
   it 'Can delete UserSquad association' do
     user_1 = User.create!(gamertag: "sorryIMbad", platform: "x-box")
     user_2 = User.create!(gamertag: "IMbad", platform: "x-box")

@@ -1,8 +1,12 @@
 class Api::V1::Users::SquadsController < ApplicationController
   def index
-    user = User.find_by(params[:id])
-    squads = UserSquad.where(user_id: user.id)
-    render json: UserSquadSerializer.new(squads), status: 201
+    user = User.find_by(id: params[:user_id])
+    if !user.nil?
+      squads = UserSquad.where(user_id: user.id)
+      render json: UserSquadSerializer.new(squads), status: 201
+    else
+      render json: { description: "Error: User not found"}, status: 404
+    end
   end
 
   def create
