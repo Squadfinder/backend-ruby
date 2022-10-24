@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   def index
+    binding.pry
     render json: UserSerializer.new(User.all)
   end
 

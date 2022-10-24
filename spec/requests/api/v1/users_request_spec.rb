@@ -86,4 +86,13 @@ describe "Users API" do
     expect(result[:user_games][0]).to have_key(:image_url)
     expect(result[:user_games][0][:image_url]).to be_a(String)
   end
+
+  it 'returns an error if there is an issue with users index response' do
+    create_list(:user, 5)
+
+    get api_v1_users_path
+
+    expect(response).to be_successful
+    expect(response.status).to eq(401)
+  end
 end
