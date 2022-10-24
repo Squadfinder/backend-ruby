@@ -86,4 +86,46 @@ describe "Users API" do
     expect(result[:user_games][0]).to have_key(:image_url)
     expect(result[:user_games][0][:image_url]).to be_a(String)
   end
+
+  it 'returns an error if no users exist' do
+    create_list(:user, 0)
+
+    get api_v1_users_path
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(result.keys).to include(:description)
+    expect(result[:description]).to eq 'Error: Users Not Found'
+  end
+
+  it 'returns an error if no matching user is found' do
+    create_list(:user, 5)
+
+    get api_v1_user_path(1000)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(result.keys).to include(:description)
+    expect(result[:description]).to eq 'Error: User Not Found'
+  end
+
+  it 'returns an error if no user id is given' do
+    user = create_list(:user, 0)
+
+    get api_v1_user_path(0)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(result.keys).to include(:description)
+    expect(result[:description]).to eq 'Error: User Not Found'
+  end
 end
