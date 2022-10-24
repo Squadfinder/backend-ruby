@@ -114,4 +114,18 @@ describe "Users API" do
     expect(result.keys).to include(:description)
     expect(result[:description]).to eq 'Error: User Not Found'
   end
+
+  it 'returns an error if no user id is given' do
+    user = create_list(:user, 0)
+
+    get api_v1_user_path(0)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(result.keys).to include(:description)
+    expect(result[:description]).to eq 'Error: User Not Found'
+  end
 end
