@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :param_validation
   def index
     users = User.all
     if users.present?
@@ -9,6 +10,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    render json: UserSerializer.new(User.find(params[:id]))
+    user = User.find(params[:id])
+      render json: UserSerializer.new(user), status: 201
+  end
+
+  private
+
+  def param_validation
+    if params[:id].present?
+      render json: { description: "Error: User Not Found" }, status: 404
+    end
   end
 end
