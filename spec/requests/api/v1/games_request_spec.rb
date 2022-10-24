@@ -26,4 +26,15 @@ describe 'Games API' do
     expect(data[:consoles][3]).to eq("Apple Macintosh")
     expect(data[:consoles][4]).to eq("Linux")
   end
+  
+  it 'renders an error if no data is available for a given game/ID', :vcr do
+    get api_v1_game_path(12930487417410978241379081243907812349078)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq 404
+
+    result = JSON.parse(response.body, symbolize_names: true)
+    expect(result.keys).to include(:description)
+    expect(result[:description]).to eq "Error: No game found"
+  end
 end

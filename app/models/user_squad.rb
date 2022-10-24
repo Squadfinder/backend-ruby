@@ -8,4 +8,5 @@ class UserSquad < ApplicationRecord
   validates_numericality_of :squad_id
   belongs_to :user
   belongs_to :squad
+
 end
