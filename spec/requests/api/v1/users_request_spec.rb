@@ -87,12 +87,17 @@ describe "Users API" do
     expect(result[:user_games][0][:image_url]).to be_a(String)
   end
 
-  it 'returns an error if there is an issue with users index response' do
+  it 'returns an error if no users exist' do
     create_list(:user, 0)
 
     get api_v1_users_path
 
     expect(response).to_not be_successful
     expect(response.status).to eq(404)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(result.keys).to include(:description)
+    expect(result[:description]).to eq 'Error: Users Not Found'
   end
 end
