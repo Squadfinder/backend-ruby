@@ -11,4 +11,5 @@ class RawgSearchFacade
       RawgSearch.new(info)
     end
   end
+
 end
