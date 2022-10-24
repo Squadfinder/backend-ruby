@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.rawg.io/api/games/12930487417410978241379081243907812349078?key=<RAWG
+      API Key>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.6.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 22 Oct 2022 20:33:31 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '23'
+      Connection:
+      - keep-alive
+      Allow:
+      - GET, PATCH, HEAD, OPTIONS
+      Path:
+      - api-game-detail
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Origin
+      Content-Language:
+      - en
+      Api-User:
+      - '658140'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=fmTnB6jTEWpdnP81TCq8SdvDZG5nzQAa2fSz2PndkGO5XViaCmGP9TGhGRQAJu4jhEXw1oG5DCcm1p2wkuoDItMWY9O7NmBF2gVBl1NVttp17%2BG0zhyxwh%2FYyHBo"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=0; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 75e502200d8a5f85-LAS
+    body:
+      encoding: UTF-8
+      string: '{"detail":"Not found."}'
+  recorded_at: Sat, 22 Oct 2022 20:33:31 GMT
+recorded_with: VCR 6.1.0

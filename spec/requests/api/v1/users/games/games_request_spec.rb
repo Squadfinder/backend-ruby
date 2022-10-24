@@ -116,6 +116,9 @@ describe "Users games" do
         expect(response.status).to eq(401)
 
         result = JSON.parse(response.body, symbolize_names: true)
+        
+        expect(result.keys).to include(:description)
+        expect(result[:description]).to eq 'Error: Incorrect parameters'
         expect(UserGame.count).to eq(0)
   end
 end

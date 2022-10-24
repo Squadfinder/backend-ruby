@@ -9,7 +9,7 @@ class Api::V1::Users::GamesController < ApplicationController
     if user_game.save
       render json: UserGameSerializer.new(user_game), status: 201
     else
-      render json: { error: 'Parmas Are Incorrect' }, status: 401
+      render json: { description: 'Error: Incorrect parameters' }, status: 401
     end
   end
 
