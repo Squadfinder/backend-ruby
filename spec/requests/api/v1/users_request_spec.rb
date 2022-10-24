@@ -88,11 +88,11 @@ describe "Users API" do
   end
 
   it 'returns an error if there is an issue with users index response' do
-    create_list(:user, 5)
+    create_list(:user, 0)
 
     get api_v1_users_path
 
-    expect(response).to be_successful
-    expect(response.status).to eq(401)
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
   end
 end
