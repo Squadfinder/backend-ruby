@@ -4,7 +4,11 @@ class RawgSearch
   def initialize(data)
     @game_id = data[:id]
     @name = data[:name]
-    @platforms = platform(data)
+    @platforms = if data[:platforms] == nil
+                    @platforms = "nil"
+                  else
+                    platform(data)
+                  end
     @image = data[:background_image]
     @genres = data[:genres].map {|data| data[:name]}
   end

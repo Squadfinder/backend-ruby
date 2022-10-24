@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.rawg.io/api/games?genres=sdfvsdj%20vlskd&key=<RAWG API Key>&page_size=20&search=sndfbsdf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.6.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Oct 2022 19:27:41 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Path:
+      - api-game-list
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Origin
+      Content-Language:
+      - en
+      Api-User:
+      - '658155'
+      X-Cache-Status:
+      - MISS
+      X-Server:
+      - api_rawg_io
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=hx21kntyIecczcppid9Ev%2B3B9ccYlTWwbO%2FVMZstbxq56a3Wi9LQIFR%2By%2BqAjDtK%2FALSyyRcKJuheH8xeBGnS4EFyZ8cYgroYWMnA0SsaGkKNzhVQxmkuHRvjIB5"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=0; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 75f51c779b04e120-ORD
+    body:
+      encoding: UTF-8
+      string: '{"count":0,"next":null,"previous":null,"results":[],"user_platforms":false}'
+  recorded_at: Mon, 24 Oct 2022 19:27:41 GMT
+recorded_with: VCR 6.1.0

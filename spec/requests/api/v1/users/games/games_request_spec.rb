@@ -121,4 +121,26 @@ describe "Users games" do
         expect(result[:description]).to eq 'Error: Incorrect parameters'
         expect(UserGame.count).to eq(0)
   end
+  it "is not able to create a game if it does not have a vaild user and render a 401" do
+
+        user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+        user2 = User.create!(gamertag: "HelloSaltyImDad", platform: "x-box")
+
+        create_user_games = {
+          'user_id': "happy guy",
+          'game_id':  2356,
+          'image_url': "www.pic.com/image.img",
+          'game_title': "pokemon"
+        }
+
+        post api_v1_user_games_path(create_user_games)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq(401)
+
+        result = JSON.parse(response.body, symbolize_names: true)
+        expect(UserGame.count).to eq(0)
+        expect(response).to_not be_successful
+        expect(response.status).to eq(401)
+  end
 end
