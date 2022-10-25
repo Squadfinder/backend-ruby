@@ -90,4 +90,23 @@ describe "Squads API" do
     expect(squads[3].host_id).to eq(user_1.id)
     expect(squads[3].status).to eq("approved")
   end
+
+  it 'returns an error if squad was not created' do
+    user_1 = User.create!(gamertag: "mike", platform: "x-box")
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
+    user_3 = User.create!(gamertag: 'thomas', platform: 'XBox')
+    user_4 = User.create!(gamertag: 'wes', platform: 'XBox')
+
+    create_squad_body = {}
+
+    post api_v1_squads_path(create_squad_body)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(result.keys).to include(:description)
+    expect(result[:description]).to eq "Error: Squad Not Created"
+  end
 end
