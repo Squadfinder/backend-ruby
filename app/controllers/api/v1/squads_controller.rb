@@ -9,7 +9,6 @@ class Api::V1::SquadsController < ApplicationController
         host_id: host.id,
         status: 1
       )
-
       params[:squadMembers].each do |member|
         UserSquad.create!(
           user_id: member.to_i,
@@ -17,7 +16,8 @@ class Api::V1::SquadsController < ApplicationController
           host_id: host.id,
           status: 1
         )
-        ContactJob.perform_now(User.find(member), squad, host)
+        # Breaking here
+        ContactJob.perform_later(User.find(member), squad, host)
       end
       render json: SquadSerializer.new(squad), status: 201
     else
