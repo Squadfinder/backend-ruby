@@ -1,11 +1,11 @@
 # Create all Users
-blake = User.create!(gamertag: 'blake', platform: 'PC')
-mike = User.create!(gamertag: 'mike', platform: 'PS5')
-thomas = User.create!(gamertag: 'thomas', platform: 'XBox')
-wes = User.create!(gamertag: 'wes', platform: 'XBox')
-anna = User.create(gamertag: 'anna', platform: 'PC')
-tom = User.create(gamertag: 'tom', platform: 'PS5')
-nick = User.create(gamertag: 'nick', platform: 'XBox')
+blake = User.create!(gamertag: 'Blake', platform: 'PC')
+mike = User.create!(gamertag: 'Mike', platform: 'PS5')
+thomas = User.create!(gamertag: 'Thomas', platform: 'Xbox')
+wes = User.create!(gamertag: 'Wes', platform: 'Xbox')
+anna = User.create(gamertag: 'Anna', platform: 'PC')
+tom = User.create(gamertag: 'Tom', platform: 'PS5')
+nick = User.create(gamertag: 'Nick', platform: 'Xbox')
 
 # Blake's Games: All 5
 blake_halo_usergame = UserGame.create!(
