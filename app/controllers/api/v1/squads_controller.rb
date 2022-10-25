@@ -18,6 +18,8 @@ class Api::V1::SquadsController < ApplicationController
         )
       end
       render json: SquadSerializer.new(squad), status: 201
+    else
+      render json: { description: "Error: Squad Not Created" }, status: 404
     end
   end
 
