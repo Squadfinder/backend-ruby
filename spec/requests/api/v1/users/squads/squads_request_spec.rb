@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'UserSquads API' do
   it 'Can return an index of UserSquads' do
-    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
     halo = Squad.create!(game: 'Halo', event_time: Time.now, competitive: 'true')
     rocket = Squad.create!(game: 'Rocket League', event_time: Time.now, competitive: 'true')
     league = Squad.create!(game: 'LOL', event_time: Time.now, competitive: 'true')
@@ -19,7 +19,7 @@ describe 'UserSquads API' do
 
     expect(response).to be_successful
     expect(response.status).to eq(201)
-    
+
     expect(result).to be_a Hash
     expect(result.keys.count).to eq 1
     expect(result.keys).to include(:data)
@@ -48,12 +48,12 @@ describe 'UserSquads API' do
       expect(user_squad[:attributes][:squad][:event_time]).to be_a String
       expect(user_squad[:attributes][:squad][:number_players]).to be_a Integer
       # expect(user_squad[:attributes][:squad][:competitive]).to be_a Boolean
-      
+
       expect(user_squad[:attributes][:squad][:members]).to be_a Array
       user_squad[:attributes][:squad][:members].each do |member|
         expect(member).to be_a Hash
-        expect(member.keys.count).to eq 5
-        expect(member.keys).to include(:id, :gamertag, :platform, :created_at, :updated_at)
+        expect(member.keys.count).to eq 6
+        expect(member.keys).to include(:id, :gamertag, :platform, :email, :created_at, :updated_at)
 
         expect(member[:id]).to be_a Integer
         expect(member[:gamertag]).to be_a String
@@ -78,9 +78,9 @@ describe 'UserSquads API' do
   end
 
   it 'Can delete UserSquad association' do
-    user_1 = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
-    user_3 = User.create!(gamertag: "bad", platform: "xbox")
+    user_1 = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
+    user_3 = User.create!(gamertag: "bad", platform: "xbox", email: "test3@gmail.com")
     rocket = Squad.create!(game: 'Rocket League', event_time: Time.now, competitive: 'true')
     rocket_squad_user_1 = UserSquad.create!(user_id: user_1.id, squad_id: rocket.id, host_id: user_1.id)
     rocket_squad_user_2 = UserSquad.create!(user_id: user_2.id, squad_id: rocket.id, host_id: user_1.id)
@@ -94,7 +94,7 @@ describe 'UserSquads API' do
   end
 
   it 'Renders an error if no UserSquad exists with an ID when deleting' do
-    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
     delete api_v1_user_squad_path(user_2.id, 9001)
 
     expect(response).to_not be_successful

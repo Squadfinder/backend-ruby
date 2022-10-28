@@ -3,9 +3,9 @@ require 'rails_helper'
 describe "Squads API" do
   it 'Can create a squad and a UserSquad -- making the user creating it the host' do
     user_1 = create(:user)
-    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
-    user_3 = User.create!(gamertag: 'thomas', platform: 'XBox')
-    user_4 = User.create!(gamertag: 'wes', platform: 'XBox')
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
+    user_3 = User.create!(gamertag: 'Thomas', platform: 'Xbox', email: "thomasturner482@gmail.com")
+    user_4 = User.create!(gamertag: 'Wes', platform: 'Xbox', email: "Wesleywes42@gmail.com")
     create_squad_body = {
       'user': user_1.id,
       'game':  Faker::Game.title,
@@ -31,7 +31,7 @@ describe "Squads API" do
     expect(response_body[:data]).to be_a Hash
     expect(response_body[:data].keys.count).to eq 3
     expect(response_body[:data].keys).to include(:id, :type, :attributes)
-    expect(response_body[:data][:id]).to be_a String    
+    expect(response_body[:data][:id]).to be_a String
     expect(response_body[:data][:id]).to eq Squad.last.id.to_s
     expect(response_body[:data][:type]).to be_a String
     expect(response_body[:data][:type]).to eq 'squad'
@@ -50,9 +50,9 @@ describe "Squads API" do
 
   it 'Creates UserSquad association for each member of the squad when a squad is formed' do
     user_1 = create(:user)
-    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
-    user_3 = User.create!(gamertag: 'thomas', platform: 'XBox')
-    user_4 = User.create!(gamertag: 'wes', platform: 'XBox')
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
+    user_3 = User.create!(gamertag: 'Thomas', platform: 'Xbox', email: "thomasturner482@gmail.com")
+    user_4 = User.create!(gamertag: 'Wes', platform: 'Xbox', email: "Wesleywes42@gmail.com")
 
     create_squad_body = {
       'user': user_1.id,
@@ -92,10 +92,10 @@ describe "Squads API" do
   end
 
   it 'returns an error if squad was not created' do
-    user_1 = User.create!(gamertag: "mike", platform: "x-box")
-    user_2 = User.create!(gamertag: "IMbad", platform: "x-box")
-    user_3 = User.create!(gamertag: 'thomas', platform: 'XBox')
-    user_4 = User.create!(gamertag: 'wes', platform: 'XBox')
+    user_1 = create(:user)
+    user_2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
+    user_3 = User.create!(gamertag: 'Thomas', platform: 'Xbox', email: "thomasturner482@gmail.com")
+    user_4 = User.create!(gamertag: 'Wes', platform: 'Xbox', email: "Wesleywes42@gmail.com")
 
     create_squad_body = {}
 

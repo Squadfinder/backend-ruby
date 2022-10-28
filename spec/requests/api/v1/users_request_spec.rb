@@ -29,14 +29,17 @@ describe "Users API" do
       expect(user).to have_key(:attributes)
       expect(user[:attributes]).to be_a Hash
 
-      expect(user[:attributes].keys.count).to eq 3
-      expect(user[:attributes].keys).to include(:gamertag, :platform, :user_games)
+      expect(user[:attributes].keys.count).to eq 4
+      expect(user[:attributes].keys).to include(:gamertag, :platform, :email, :user_games)
 
       expect(user[:attributes][:gamertag]).to be_a String
       expect(user[:attributes][:gamertag]).to eq User.find(user[:id]).gamertag
 
       expect(user[:attributes][:platform]).to be_a String
       expect(user[:attributes][:platform]).to eq User.find(user[:id]).platform
+
+      expect(user[:attributes][:email]).to be_a String
+      expect(user[:attributes][:email]).to eq User.find(user[:id]).email
 
       expect(user[:attributes][:user_games]).to be_a Array
 
@@ -59,7 +62,7 @@ describe "Users API" do
   end
 
   it 'Can return data for a specific User' do
-    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
 
     usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
     usergame2 = UserGame.create!(user_id: user.id, game_id: 2387, image_url: "www.pic.com/image.img", game_title: "Squad")
