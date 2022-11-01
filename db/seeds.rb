@@ -1,130 +1,130 @@
 # Create all Users
-blake = User.create!(gamertag: 'Blake', platform: 'PC')
-mike = User.create!(gamertag: 'Mike', platform: 'PS5')
-thomas = User.create!(gamertag: 'Thomas', platform: 'Xbox')
-wes = User.create!(gamertag: 'Wes', platform: 'Xbox')
-anna = User.create(gamertag: 'Anna', platform: 'PC')
-tom = User.create(gamertag: 'Tom', platform: 'PS5')
-nick = User.create(gamertag: 'Nick', platform: 'Xbox')
+blake = User.create!(gamertag: 'Blake', platform: 'PC', email: "Blakesaylor@gmail.com")
+mike = User.create!(gamertag: 'Mike', platform: 'PS5', email: "mikekoul@gmail.com")
+thomas = User.create!(gamertag: 'Thomas', platform: 'Xbox', email: "thomasturner482@gmail.com")
+wes = User.create!(gamertag: 'Wes', platform: 'Xbox', email: "Wesleywes42@gmail.com")
+anna = User.create(gamertag: 'Anna', platform: 'PC', email: "aspitzemail@gmail.com")
+tom = User.create(gamertag: 'Tom', platform: 'PS5', email: "thomasmfettig@gmail.com")
+nick = User.create(gamertag: 'Nick', platform: 'Xbox', email: "nick.liggett@gmail.com")
 
 # Blake's Games: All 5
 blake_halo_usergame = UserGame.create!(
-  user_id: blake.id, 
+  user_id: blake.id,
   game_id: 58751,
-  image_url: 'https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg', 
+  image_url: 'https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg',
   game_title: 'Halo Infinite')
 blake_cod_usergame = UserGame.create!(
-  user_id: blake.id, 
+  user_id: blake.id,
   game_id: 418467,
-  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg', 
+  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg',
   game_title: 'Call of Duty: Warzone')
 blake_wow_usergame = UserGame.create!(
-  user_id: blake.id, 
+  user_id: blake.id,
   game_id: 388315,
-  image_url: 'https://media.rawg.io/media/games/1bf/1bff5a69755eaeef9d37b4e0a14e9bca.jpg', 
+  image_url: 'https://media.rawg.io/media/games/1bf/1bff5a69755eaeef9d37b4e0a14e9bca.jpg',
   game_title: 'World of Warcraft: Shadowlands')
 blake_fall_guys_usergame = UserGame.create!(
-  user_id: blake.id, 
+  user_id: blake.id,
   game_id: 326292,
-  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg', 
+  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg',
   game_title: 'Fall Guys: Ultimate Knockout')
 blake_league_usergame = UserGame.create!(
-  user_id: blake.id, 
+  user_id: blake.id,
   game_id: 23598,
-  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg', 
+  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg',
   game_title: 'League of Legends')
 
 # Mike's Games: Halo, Fall Guys, League of Legends
 mike_halo_usergame = UserGame.create!(
-  user_id: mike.id, 
+  user_id: mike.id,
   game_id: 58751,
-  image_url: 'https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg', 
+  image_url: 'https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg',
   game_title: 'Halo Infinite')
 mike_fall_guys_usergame = UserGame.create!(
-  user_id: mike.id, 
+  user_id: mike.id,
   game_id: 326292,
-  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg', 
+  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg',
   game_title: 'Fall Guys: Ultimate Knockout')
 mike_league_usergame = UserGame.create!(
-  user_id: mike.id, 
+  user_id: mike.id,
   game_id: 23598,
-  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg', 
+  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg',
   game_title: 'League of Legends')
 
 # Thomas's Games: Halo, Call of Duty, League of Legends
 thomas_halo_usergame = UserGame.create!(
-  user_id: thomas.id, 
+  user_id: thomas.id,
   game_id: 58751,
-  image_url: 'https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg', 
+  image_url: 'https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg',
   game_title: 'Halo Infinite')
 thomas_cod_usergame = UserGame.create!(
-  user_id: thomas.id, 
+  user_id: thomas.id,
   game_id: 418467,
-  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg', 
+  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg',
   game_title: 'Call of Duty: Warzone')
 thomas_league_usergame = UserGame.create!(
-  user_id: thomas.id, 
+  user_id: thomas.id,
   game_id: 23598,
-  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg', 
+  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg',
   game_title: 'League of Legends')
 
 
 # Wes's Games: Halo, Call of Duty, Fall Guys
 wes_halo_usergame = UserGame.create!(
-  user_id: wes.id, 
+  user_id: wes.id,
   game_id: 58751,
-  image_url: 'https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg', 
+  image_url: 'https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg',
   game_title: 'Halo Infinite')
 wes_cod_usergame = UserGame.create!(
-  user_id: wes.id, 
+  user_id: wes.id,
   game_id: 418467,
-  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg', 
+  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg',
   game_title: 'Call of Duty: Warzone')
 wes_fall_guys_usergame = UserGame.create!(
-  user_id: wes.id, 
+  user_id: wes.id,
   game_id: 326292,
-  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg', 
+  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg',
   game_title: 'Fall Guys: Ultimate Knockout')
 
 # Anna's Games: Fall Guys, League of Legends
 anna_fall_guys_usergame = UserGame.create!(
-  user_id: anna.id, 
+  user_id: anna.id,
   game_id: 326292,
-  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg', 
+  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg',
   game_title: 'Fall Guys: Ultimate Knockout')
 anna_league_usergame = UserGame.create!(
-  user_id: anna.id, 
+  user_id: anna.id,
   game_id: 23598,
-  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg', 
+  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg',
   game_title: 'League of Legends')
 
 # Tom's Games: Call of Duty, Fall Guys, League of Legends
 tom_cod_usergame = UserGame.create!(
-  user_id: tom.id, 
+  user_id: tom.id,
   game_id: 418467,
-  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg', 
+  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg',
   game_title: 'Call of Duty: Warzone')
 tom_fall_guys_usergame = UserGame.create!(
-  user_id: tom.id, 
+  user_id: tom.id,
   game_id: 326292,
-  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg', 
+  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg',
   game_title: 'Fall Guys: Ultimate Knockout')
 tom_league_usergame = UserGame.create!(
-  user_id: tom.id, 
+  user_id: tom.id,
   game_id: 23598,
-  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg', 
+  image_url: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg',
   game_title: 'League of Legends')
 
 # Nick's Games: Call of Duty, Fall Guys
 nick_cod_usergame = UserGame.create!(
-  user_id: nick.id, 
+  user_id: nick.id,
   game_id: 418467,
-  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg', 
+  image_url: 'https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg',
   game_title: 'Call of Duty: Warzone')
 nick_fall_guys_usergame = UserGame.create!(
-  user_id: nick.id, 
+  user_id: nick.id,
   game_id: 326292,
-  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg', 
+  image_url: 'https://media.rawg.io/media/games/5eb/5eb49eb2fa0738fdb5bacea557b1bc57.jpg',
   game_title: 'Fall Guys: Ultimate Knockout')
 
 # Squads for all 5 Games

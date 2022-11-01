@@ -3,8 +3,8 @@ require 'rails_helper'
 describe "Users games" do
   it 'Can return a list of all Users games' do
 
-    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-    user2 = User.create!(gamertag: "HelloSaltyImDad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
+    user2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
 
     usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
     usergame2 = UserGame.create!(user_id: user.id, game_id: 2387, image_url: "www.pic.com/image.img", game_title: "Squad")
@@ -37,7 +37,7 @@ describe "Users games" do
 
   it 'can delete a user game' do
 
-    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
 
     usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
@@ -55,7 +55,7 @@ describe "Users games" do
 
   it 'return error 404 if can not delete a user game' do
 
-    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
 
     usergame1 = UserGame.create!(user_id: user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
@@ -73,8 +73,8 @@ describe "Users games" do
 
   it "is able to create a user games" do
 
-    user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-    user2 = User.create!(gamertag: "HelloSaltyImDad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
+    user2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
 
     create_user_games = {
       'user_id': user.id,
@@ -100,8 +100,8 @@ describe "Users games" do
 
   it "is not able to create a game if it does not have a vaild user" do
 
-        user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-        user2 = User.create!(gamertag: "HelloSaltyImDad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
+    user2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
 
         create_user_games = {
           'user_id': "happy guy",
@@ -116,15 +116,15 @@ describe "Users games" do
         expect(response.status).to eq(401)
 
         result = JSON.parse(response.body, symbolize_names: true)
-        
+
         expect(result.keys).to include(:description)
         expect(result[:description]).to eq 'Error: Incorrect parameters'
         expect(UserGame.count).to eq(0)
   end
   it "is not able to create a game if it does not have a vaild user and render a 401" do
 
-        user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-        user2 = User.create!(gamertag: "HelloSaltyImDad", platform: "x-box")
+    user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
+    user2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
 
         create_user_games = {
           'user_id': "happy guy",

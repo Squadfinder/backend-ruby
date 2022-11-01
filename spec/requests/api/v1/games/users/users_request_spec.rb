@@ -17,12 +17,12 @@ describe "Game Users API" do
     expect(response).to be_successful
 
     all_users = JSON.parse(response.body, symbolize_names: true)
-
+# binding.pry
     contained_ids = all_users[:data].map { |user| user[:id].to_i}
     expect(possible_ids).to eq contained_ids
 
     expect(all_users).to be_a Hash
-    
+
     expect(all_users.keys.count).to eq 1
     expect(all_users.keys).to include(:data)
 

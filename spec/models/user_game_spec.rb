@@ -14,14 +14,14 @@ RSpec.describe UserGame, type: :model do
 
   before :each do
 
-    @user = User.create!(gamertag: "sorryIMbad", platform: "x-box")
-    @user2 = User.create!(gamertag: "HelloSaltyImDad", platform: "x-box")
+    @user = User.create!(gamertag: "sorryIMbad", platform: "x-box", email: "test1@gmail.com")
+    @user_2 = User.create!(gamertag: "IMbad", platform: "x-box", email: "test2@gmail.com")
 
     @usergame1 = UserGame.create!(user_id: @user.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
     @usergame2 = UserGame.create!(user_id: @user.id, game_id: 2387, image_url: "www.pic.com/image.img", game_title: "Squad")
     @usergame3 = UserGame.create!(user_id: @user.id, game_id: 2323, image_url: "www.pic.com/image.img", game_title: "Scorn")
     @usergame4 = UserGame.create!(user_id: @user.id, game_id: 2356, image_url: "www.pic.com/image.img", game_title: "Rocket Leauge")
-    @usergame5 = UserGame.create!(user_id: @user2.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
+    @usergame5 = UserGame.create!(user_id: @user_2.id, game_id: 2343, image_url: "www.pic.com/image.img", game_title: "Halo")
 
   end
 

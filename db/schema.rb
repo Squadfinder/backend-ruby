@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 4) do
   create_table "users", force: :cascade do |t|
     t.string "gamertag"
     t.string "platform"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
